@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	
+	<style type="text/css">
+	.order-table{   
+		border-collapse:collapse;
+	}
+	
+	.order-table-header{
+		text-align:center;
+		background:none repeat scroll 0 0 #E5E5E5;
+		border-bottom:1px solid #BBBBBB;
+		padding:16px;
+	}
+	
+	.order-table-odd-row{
+		text-align:center;
+		background:none repeat scroll 0 0 #FFFFFFF;
+		border-top:1px solid #BBBBBB;
+	}
+	
+	.order-table-even-row{
+		text-align:center;
+		background:none repeat scroll 0 0 #F9F9F9;
+		border-top:1px solid #BBBBBB;
+	}
+	
+	</style>
+</h:head>
+ 
+<h:body> 
+
+
+
+Lista de Notas!!!
+<br/>
+	<div>
+		<h:form>	
+			<p:dataTable var="nota" value="#{notasBean.notas}">
+	             <p:column headerText="Id">
+	                    <h:outputText value="#{nota.id}" />
+	             </p:column>
+	  
+	             <p:column headerText="Title">
+	             	<ui:remove>
+		             	<h:commandLink action="#{notasBean.exibir(nota)}">
+		                    <h:outputText value="#{nota.title}" />
+		                </h:commandLink> 
+		             </ui:remove>
+	                
+	                <a href="/notas/detalhes?id=#{nota.id}">
+	                	 <h:outputText value="#{nota.title}" />
+	                </a>
+	             </p:column>
+	  
+	             <p:column headerText="Corpo">
+	                    <h:outputText value="#{nota.body}" />
+	             </p:column>
+	  
+	             <p:column headerText="Ações">
+	             	<h:commandLink action="#" value="Editar" />
+	             	<h:commandLink action="#" value="Excluir" />
+	             </p:column>
+	       </p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+</html>
