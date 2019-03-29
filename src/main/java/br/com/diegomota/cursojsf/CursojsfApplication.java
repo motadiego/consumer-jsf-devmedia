@@ -8,13 +8,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 import br.com.diegomota.cursojsf.dto.NotaDTO;
-import br.com.diegomota.cursojsf.rest.NotaRest;
+import br.com.diegomota.cursojsf.rest.NotaRestConsumer;
 
 @SpringBootApplication
 public class CursojsfApplication extends SpringBootServletInitializer implements CommandLineRunner {
 	
 	@Autowired
-	private NotaRest notaRest; 
+	private NotaRestConsumer notaRest; 
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursojsfApplication.class, args);
@@ -30,5 +30,6 @@ public class CursojsfApplication extends SpringBootServletInitializer implements
 	@Override
 	public void run(String... arg0) throws Exception {
 		System.out.println("IMPRIMIR ALGUMA COISA");
+		
 	}
 }

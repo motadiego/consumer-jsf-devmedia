@@ -9,13 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.diegomota.cursojsf.dto.NotaDTO;
-import br.com.diegomota.cursojsf.rest.NotaRest;
+import br.com.diegomota.cursojsf.rest.NotaRestConsumer;
 
-@RequestScope
+@SessionScope
 @Controller("notasBean")
 class NotasBean {
 	
@@ -24,7 +24,7 @@ class NotasBean {
 	
 	
 	@Autowired
-	private NotaRest notaRest;
+	private NotaRestConsumer notaRest;
 	
 	private List<NotaDTO> notas;
 	
@@ -52,7 +52,16 @@ class NotasBean {
 		return model;
 	}
 	
-	
+	public String entrarEditar(NotaDTO nota) {
+		this.notaDTO = nota;
+		return "form.jsf";
+	}
+	 
+	public String atualizar() {
+		notaRest.atualizar(this.notaDTO);
+		return "notas.xhtml";
+	}
+	 
 	
 	public List<NotaDTO> getNotas() {
 		return notas;
