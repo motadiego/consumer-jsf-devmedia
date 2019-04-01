@@ -37,6 +37,13 @@
 <h:body> 
 
 
+<h:form>
+	<h:commandLink action="#{notasBean.entrarInserir}" value="Nova nota" />
+</h:form>
+
+
+<h:outputText value="#{notasBean.mensagem}" />
+<br/><br/>
 
 Lista de Notas!!!
 <br/>
@@ -65,7 +72,7 @@ Lista de Notas!!!
 	  
 	             <p:column headerText="Ações">
 	             	<h:commandLink action="#{notasBean.entrarEditar(nota)}" value="Editar" />
-	             	<h:commandLink action="#" value="Excluir" />
+	             	<h:commandLink action="#{notasBean.exluir(nota)}" value="Excluir"   onclick="if (!confirm('Deseja realmente exluir a nota?')) return false"/>
 	             </p:column>
 	       </p:dataTable>
 		</h:form>

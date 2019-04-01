@@ -2,6 +2,9 @@ package br.com.diegomota.cursojsf.dto;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -12,7 +15,12 @@ public class NotaDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
+	
+	@NotEmpty(message="Titulo: Preenchimento obrigatório")
+	@Length(min=5 , max=20 , message="Titulo: O tamanho deve ser entre 5 e 20 caracteres")
 	private String title;
+	
+	@NotEmpty(message="Corpo: Preenchimento obrigatório")
 	private String body;
 	
 	public NotaDTO() {

@@ -9,17 +9,14 @@
 </h:head>
  
 <h:body> 
-Cadastro / Atualizar nota!!!
+<h:outputText value="Cadastrar nota"  rendered="#{notasBean.notaDTO.id == null}" />
+<h:outputText value="Atualizar nota"  rendered="#{notasBean.notaDTO.id != null}" />
+
+<h:messages />
+
 <br/>
 	<div>
 		<h:form>	
-			
-			<h:panelGroup>
-				 <p:outputLabel for="id" value="id: " />
-				 <h:inputText id="id" value="#{notasBean.notaDTO.id}" />
-			</h:panelGroup>
-			
-			<br/><br/>
 			
 			<h:panelGroup>
 				 <p:outputLabel for="title" value="Titulo: " />
@@ -34,7 +31,8 @@ Cadastro / Atualizar nota!!!
 			</h:panelGroup>
 			
 			<br/>
-			<h:commandButton action="#{notasBean.atualizar}" value="Atualizar" />
+			<h:commandButton action="#{notasBean.atualizar}" value="Atualizar"  rendered="#{notasBean.notaDTO.id != null}"/>
+			<h:commandButton action="#{notasBean.inserir}" value="Cadastrar" rendered="#{notasBean.notaDTO.id == null}" />
 			
 		</h:form>
 	</div>

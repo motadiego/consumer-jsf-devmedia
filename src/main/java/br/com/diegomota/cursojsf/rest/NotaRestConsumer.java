@@ -52,4 +52,22 @@ public class NotaRestConsumer {
 		restTemplate.exchange(url_api+"/{id}", HttpMethod.PUT, requestEntity, NotaDTO.class, param);
 	}
 	
+	
+	public NotaDTO inserir(NotaDTO nota) {
+		ResponseEntity<NotaDTO> response = restTemplate.postForEntity(url_api, nota, NotaDTO.class);
+		return response.getBody();
+	}
+	
+	
+	
+	public void excluir(NotaDTO nota) {
+		Map<String, String> param = new HashMap<String, String>();
+	    param.put("id",nota.getId().toString());
+		
+		HttpEntity<NotaDTO>  requestEntity = new HttpEntity<NotaDTO>(nota);
+		
+		restTemplate.exchange(url_api+"/{id}", HttpMethod.DELETE, requestEntity, NotaDTO.class, param);
+	}
+	
+	
 }

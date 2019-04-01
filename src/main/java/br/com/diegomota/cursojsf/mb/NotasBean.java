@@ -30,6 +30,8 @@ class NotasBean {
 	
 	private NotaDTO notaDTO;
 	
+	private String mensagem;
+	
 	public NotasBean() {
 		
 	}
@@ -59,8 +61,31 @@ class NotasBean {
 	 
 	public String atualizar() {
 		notaRest.atualizar(this.notaDTO);
+		mensagem = "Nota atualizada com sucesso!";
 		return "notas.xhtml";
 	}
+	
+	public String entrarInserir() {
+		notaDTO = new NotaDTO();
+		return "form.jsf";
+	}
+	
+	
+	public String inserir() {
+		notaRest.inserir(this.notaDTO);
+		mensagem = "Nota inserida com sucesso!";
+		notas = notaRest.listar();
+		return "notas.jsf";
+	}
+	
+	
+	public String exluir(NotaDTO nota){
+		notaRest.excluir(nota);
+		mensagem = "Nota excluida com sucesso!";
+		notas = notaRest.listar();
+		return "notas.jsf";
+	}
+	
 	 
 	
 	public List<NotaDTO> getNotas() {
@@ -77,6 +102,14 @@ class NotasBean {
 
 	public void setNotaDTO(NotaDTO notaDTO) {
 		this.notaDTO = notaDTO;
+	}
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 	
 	
