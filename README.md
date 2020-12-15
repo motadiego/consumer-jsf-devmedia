@@ -1,5 +1,5 @@
 # consumer-jsf-devmedia
-Projeto para consumir a api do curso da devmedia com JSF
+Projeto para consumir a api do curso da devmedia com JSF (http://www.deveup.com.br/notas/api/notes)
 
 ## Technoclogies
 
